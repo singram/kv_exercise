@@ -2,9 +2,10 @@ require 'readline'
 require './kv_engine/base.rb'
 require './kv_engine/exceptions.rb'
 require './kv_engine/stack.rb'
+require './kv_engine/field_stack.rb'
 
 bnd = binding
-eng = KvEngine::Stack.new
+eng = KvEngine::FieldStack.new
 while input = Readline.readline('> ', true) do
   begin
     result = eng.execute(input)

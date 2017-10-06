@@ -1,7 +1,7 @@
 module KvEngine
   class Base
 
-    ENGINE_VERSION = 'Base'
+    ENGINE_VERSION = 'Base 0.0'
 
     def initialize
       raise "Engine not implemented"

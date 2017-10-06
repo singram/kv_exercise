@@ -3,7 +3,7 @@
 # Rollback, reads, writes and deletes should be O(1) performance.
 class KvEngine::Stack < KvEngine::Base
 
-    ENGINE_VERSION = 'Stack 1.0.0'
+    ENGINE_VERSION = 'Data set stack 1.0.0'
 
     def initialize
       puts "Initalizing #{self.class::ENGINE_VERSION}..."
