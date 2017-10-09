@@ -65,7 +65,7 @@ EOS
     end
 
     def execute(input)
-      params = parse(input)
+      params = self.class.parse(input)
       if params[:params].empty?
         self.send(params[:cmd])
       else
@@ -75,7 +75,7 @@ EOS
 
     private
 
-    def parse(input)
+    def self.parse(input)
       parts = input.split(' ').map(&:strip).reject(&:empty?)
       params = { cmd: parts.shift.downcase, params: {} }
       params[:params][:key]   = parts.shift if parts[0]

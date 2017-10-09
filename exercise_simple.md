@@ -37,9 +37,9 @@ Our advice is to get started and solve some of the problem before adding on more
 
 ### COMMANDS
 
-* **READ ** Reads and prints, to stdout, the _val_ associated with _key_. If the value is not present an error is printed to stderr.
-* **WRITE  ** Stores _val_ in _key_.
-* **DELETE ** Removes all _key_ from store. Future _READ_ commands on that _key_ will return an error.
+* **READ** Reads and prints, to stdout, the _val_ associated with _key_. If the value is not present an error is printed to stderr.
+* **WRITE** Stores _val_ in _key_.
+* **DELETE** Removes all _key_ from store. Future _READ_ commands on that _key_ will return an error.
 * **START** Start a transaction.
 * **COMMIT** Commit a transaction. All actions in the current transaction are committed to the parent transaction or the root store. If there is no current transaction an error is output to stderr.
 * **ABORT** Abort a transaction. All actions in the current transaction are discarded.
