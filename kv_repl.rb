@@ -1,6 +1,4 @@
 require 'readline'
-require './kv_engine/base.rb'
-require './kv_engine/exceptions.rb'
 require './kv_engine/stack.rb'
 require './kv_engine/field_stack.rb'
 

@@ -2,6 +2,8 @@
 # Memory and cost increase with transaction depth but significantly more efficent than KVEngine::Stack
 # Abort & commit is O(n) where n is number of fields,
 # Reads, writes and deletes should be O(1) performance.
+require_relative './base.rb'
+require_relative './exceptions.rb'
 require 'pp'
 
 class KvEngine::FieldStack < KvEngine::Base
@@ -57,7 +59,7 @@ class KvEngine::FieldStack < KvEngine::Base
   end
 
   def read(key:)
-    raise Exceptions::UnknownKey.new unless @data.has_key?(key) || @data[key][-1] == DELETED
+    raise Exceptions::UnknownKey.new if !@data.has_key?(key) || @data[key][-1] == DELETED
     @mutex.synchronize do
       @data[key][-1]
     end
@@ -93,6 +95,10 @@ class KvEngine::FieldStack < KvEngine::Base
     end
     @transactions[-1].uniq!
     nil
+  end
+
+  def transaction_count
+    @transactions.size
   end
 
 end

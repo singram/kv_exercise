@@ -73,12 +73,18 @@ EOS
       end
     end
 
+    private
+
     def parse(input)
       parts = input.split(' ').map(&:strip).reject(&:empty?)
       params = { cmd: parts.shift.downcase, params: {} }
       params[:params][:key]   = parts.shift if parts[0]
       params[:params][:value] = parts.join(' ') if parts[0]
       params
+    end
+
+    def transaction_count
+      raise "Transaction count function not implemented"
     end
 
   end
