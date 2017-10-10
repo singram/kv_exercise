@@ -64,12 +64,16 @@ Supported commands are;
 EOS
     end
 
-    def execute(input)
+    def parse_and_execute(input)
       params = self.class.parse(input)
-      if params[:params].empty?
-        self.send(params[:cmd])
+      execute(params)
+    end
+
+    def execute(params)
+      if params[:key].nil?
+        self.send(params.delete(:command))
       else
-        self.send(params[:cmd], **params[:params])
+        self.send(params.delete(:command), **params)
       end
     end
 
@@ -77,9 +81,9 @@ EOS
 
     def self.parse(input)
       parts = input.split(' ').map(&:strip).reject(&:empty?)
-      params = { cmd: parts.shift.downcase, params: {} }
-      params[:params][:key]   = parts.shift if parts[0]
-      params[:params][:value] = parts.join(' ') if parts[0]
+      params = { command: parts.shift.downcase }
+      params[:key]   = parts.shift if parts[0]
+      params[:value] = parts.join(' ') if parts[0]
       params
     end
 

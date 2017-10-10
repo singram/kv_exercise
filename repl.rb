@@ -6,7 +6,7 @@ class Repl
     eng = options.engine.new
     while input = Readline.readline('> ', true) do
       begin
-        result = eng.execute(input)
+        result = eng.parse_and_execute(input)
       rescue NoMethodError => e
         STDERR.puts "\e[31m#{e.message}\e[0m"
         puts eng.help
